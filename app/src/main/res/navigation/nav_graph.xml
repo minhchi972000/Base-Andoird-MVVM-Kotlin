@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/movieFragment">
+
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.minhchi.basemydocument.fragment.home.MovieFragment"
+        android:label="MovieFragment"
+        tools:layout="@layout/movie_list" />
+    <action
+        android:id="@+id/action_global_movieFragment"
+        app:destination="@id/movieFragment" />
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.minhchi.basemydocument.fragment.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/detail_list" />
+    <action
+        android:id="@+id/action_global_detailFragment"
+        app:destination="@id/detailFragment" />
+</navigation>
