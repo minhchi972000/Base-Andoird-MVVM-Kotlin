@@ -20,7 +20,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MovieFragment : Fragment() {
 
     lateinit var vb: MovieListBinding
-
     private val vm: MovieVM by lazy {
         ViewModelProvider(this).get(MovieVM::class.java)
     }
@@ -30,14 +29,12 @@ class MovieFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         vb = MovieListBinding.inflate(inflater, container, false)
         return vb.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initViewModel()
         initMainViewModel()
     }
@@ -55,15 +52,10 @@ class MovieFragment : Fragment() {
     }
 
     private fun initMainViewModel() {
-//        vm.getAllRepositoryList().observe(viewLifecycleOwner) {
-//            repoAdapter.submitList(it)
-//            repoAdapter.notifyDataSetChanged()
-//        }
-
-        vm.getAllRepositoryList().observe(requireActivity(), Observer<List<RepositoryData>> {
+        vm.getAllRepositoryList().observe(viewLifecycleOwner) {
             repoAdapter.submitList(it)
             repoAdapter.notifyDataSetChanged()
-        })
+        }
         vm.makeApiCall()
     }
 
